@@ -1,4 +1,3 @@
-# Databricks notebook source
 from setuptools import setup, find_packages
 
 setup(
