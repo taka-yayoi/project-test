@@ -1,3 +1,4 @@
+# Databricks notebook source
 from setuptools import setup, find_packages
 
 setup(
@@ -6,9 +7,9 @@ setup(
     license='proprietary',
     description='Module Experiment',
 
-    author='greenteabiscuit',
-    author_email='hogehoge@gmail.com',
-    url='None.com',
+    author='taka-yayoi',
+    author_email='takaaki.yayoi@databricks.com',
+    url='databricks.com',
 
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
