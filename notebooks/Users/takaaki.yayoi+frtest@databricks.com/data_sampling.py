@@ -93,3 +93,14 @@ df.count()
 
 # COMMAND ----------
 
+df = sql(
+  '''
+  Select 
+  *
+  From orijinal_data
+  where 1=1
+  order by random()
+  limit 1000000
+  '''
+)
+display(df)
