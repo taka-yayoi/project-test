@@ -2,8 +2,6 @@
 print("hello")
 print("test")
 
-password = "xxxx"
-
 # COMMAND ----------
 
 # MAGIC %md test
