@@ -484,7 +484,9 @@ SELECT * FROM property_kanto_delta Version AS of 0
 -- MAGIC > **注意**<br>
 -- MAGIC > Reposを利用する際には、管理者によってRepos機能を有効化する必要があります。
 -- MAGIC 
--- MAGIC [Repos for Git integration \| Databricks on AWS](https://docs.databricks.com/repos.html)
+-- MAGIC **参考資料**
+-- MAGIC - [Databricks ReposによるGit連携 \- Qiita](https://qiita.com/taka_yayoi/items/b89f199ff0d3a4c16140)
+-- MAGIC - [Repos for Git integration \| Databricks on AWS](https://docs.databricks.com/repos.html)
 
 -- COMMAND ----------
 
@@ -517,11 +519,38 @@ SELECT * FROM property_kanto_delta Version AS of 0
 
 -- MAGIC %md
 -- MAGIC ### Reposの利用方法
+-- MAGIC 
+-- MAGIC 複数人でコード管理を行う際にはReposの利用をお勧めします。
+-- MAGIC 
+-- MAGIC 1. Repo内のノートブックを編集します。<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/repo_change.png)
+-- MAGIC 
+-- MAGIC 1. Commitする際にはノートブック名の左にある**Gitブランチ名**のボタンをクリックします。変更箇所を確認しSummaryを入力して、**Commit & Push**をクリックします。<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/repos_commit.png)
+-- MAGIC 
+-- MAGIC 1. リポジトリが更新されます。　<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/git_history_2.png)
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC ### リポジトリ上のライブラリのインポート
+-- MAGIC 
+-- MAGIC GitHubにコミットしたライブラリをインポートすることができます。<br><br>
+-- MAGIC 
+-- MAGIC 1. インポートする際にはGitHubのPersonal Access Tokenが必要となります。秘匿性の高い情報ですので、事前にSecretsとして登録しておきおます。
+-- MAGIC 2. 以下のように、pipでライブラリをインストールしてライブラリで定義されている関数を呼び出します。
+
+-- COMMAND ----------
+
+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
 
 -- COMMAND ----------
 
 -- MAGIC %md
 -- MAGIC ### NotebookレベルでのGit連携
+-- MAGIC 
+-- MAGIC Repoではなく、各自のノートブックをGitに連携することも可能です。
 -- MAGIC 
 -- MAGIC 1. 画面右上の**Revision history**をクリックします。<br>
 -- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/revision_history.png)
@@ -529,6 +558,13 @@ SELECT * FROM property_kanto_delta Version AS of 0
 -- MAGIC 1. **Git: Not Linked**をクリックします。
 -- MAGIC 1. GitのURLを指定して連携します。<br>
 -- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/git_integration.png)
+-- MAGIC 1. 連携が完了すると**Git: Synced**と表示されます。<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/git_linked.png)
+-- MAGIC 1. コミットしたいバージョンの**Save**リンクをクリックします。
+-- MAGIC 1. Descriptionを記入してコミットします。<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/save_revision.png)
+-- MAGIC 1. Gitのリポジトリに記録されます。<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/git_history.png)
 
 -- COMMAND ----------
 
