@@ -521,6 +521,18 @@ SELECT * FROM property_kanto_delta Version AS of 0
 -- COMMAND ----------
 
 -- MAGIC %md
+-- MAGIC ### NotebookレベルでのGit連携
+-- MAGIC 
+-- MAGIC 1. 画面右上の**Revision history**をクリックします。<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/revision_history.png)
+-- MAGIC 
+-- MAGIC 1. **Git: Not Linked**をクリックします。
+-- MAGIC 1. GitのURLを指定して連携します。<br>
+-- MAGIC ![](https://sajpstorage.blob.core.windows.net/demo20210614-18/git_integration.png)
+
+-- COMMAND ----------
+
+-- MAGIC %md
 -- MAGIC ## その他
 -- MAGIC <head>
 -- MAGIC   <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
