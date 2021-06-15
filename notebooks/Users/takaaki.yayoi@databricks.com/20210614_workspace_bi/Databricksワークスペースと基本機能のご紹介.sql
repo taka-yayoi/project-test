@@ -538,12 +538,27 @@ SELECT * FROM property_kanto_delta Version AS of 0
 -- MAGIC 
 -- MAGIC GitHubにコミットしたライブラリをインポートすることができます。<br><br>
 -- MAGIC 
--- MAGIC 1. インポートする際にはGitHubのPersonal Access Tokenが必要となります。秘匿性の高い情報ですので、事前にSecretsとして登録しておきおます。
+-- MAGIC 1. インポートする際にはGitHubのPersonal Access Tokenが必要となります。秘匿性の高い情報ですので、CLIを使用して事前にシークレットとして登録しておきおます。
 -- MAGIC 2. 以下のように、pipでライブラリをインストールしてライブラリで定義されている関数を呼び出します。
+-- MAGIC 
+-- MAGIC [Databricksにおけるシークレットの管理 \- Qiita](https://qiita.com/taka_yayoi/items/338ef0c5394fe4eb87c0)
 
 -- COMMAND ----------
 
-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
+-- MAGIC %python
+-- MAGIC 
+-- MAGIC # シークレットからGitHubのパーソナルアクセストークンを取得
+-- MAGIC token = dbutils.secrets.get(scope = "takaaki.yayoi@databricks.com", key = "github")
+-- MAGIC 
+-- MAGIC # pipを用いてライブラリをインストール
+-- MAGIC %pip install git+https://$token@github.com/taka-yayoi/project-test.git
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC 
+-- MAGIC import tasks
+-- MAGIC tasks.test()
 
 -- COMMAND ----------
 
