@@ -5,6 +5,8 @@ print("test")
 # COMMAND ----------
 
 # MAGIC %md test
+# MAGIC 
+# MAGIC 1
 
 # COMMAND ----------
 
