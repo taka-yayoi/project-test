@@ -11,4 +11,5 @@ if os.getenv("LOCAL"):
 
 # COMMAND ----------
 
-
+# MAGIC %python
+# MAGIC dbutils.run("test", 10)
