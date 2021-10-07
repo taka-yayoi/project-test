@@ -1,5 +1,6 @@
 # Databricks notebook source
-display()
+# MAGIC %python
+# MAGIC display()
 
 # COMMAND ----------
 
