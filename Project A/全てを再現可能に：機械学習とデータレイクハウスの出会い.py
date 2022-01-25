@@ -183,7 +183,7 @@ y_test = test[['quality']]
 # アーティファクトとして登録するグラフ用
 import matplotlib.pyplot as plt
 
-with mlflow.start_run() as run:
+with mlflow.start_run(run_name='Project A model') as run:
   # パラメーターのロギング
   n_estimators = 1000
   max_features = 'sqrt'
@@ -240,6 +240,42 @@ with mlflow.start_run() as run:
 
 # COMMAND ----------
 
+run_id = mlflow.search_runs(filter_string='tags.mlflow.runName = "Project A model"').iloc[0].run_id
+
+# COMMAND ----------
+
+run_id
+
+# COMMAND ----------
+
+# モデルレジストリにモデルを登録します
+model_name = "Project A"
+model_version = mlflow.register_model(f"runs:/{run_id}/model", model_name)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC 他のメンバーが理解しやすいように説明文を追記することができます。
+
+# COMMAND ----------
+
+from mlflow.tracking import MlflowClient
+
+client = MlflowClient()
+
+# モデルの説明文を追加します
+client.update_registered_model(
+  name=model_name,
+  description="""ワイン品質予測モデル
+
+![](https://sajpstorage.blob.core.windows.net/demo20210903-ml/22243068_s.jpg)
+
+**承認者** Taro Yamada
+"""
+)
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC ## Reposによるコードに対する共同作業
 # MAGIC 
@@ -252,6 +288,8 @@ with mlflow.start_run() as run:
 
 # MAGIC %md
 # MAGIC ## クリーンアップ
+# MAGIC 
+# MAGIC モデル、ランをクリーンアップしておきます。
 
 # COMMAND ----------
 
